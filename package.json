@@ -1,0 +1,20 @@
+{
+  "name": "Link-Maker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cassandra-driver": "^4.6.1",
+    "dotenv": "^8.2.0",
+    "generate-unique-id": "^2.0.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.7"
+  }
+}
