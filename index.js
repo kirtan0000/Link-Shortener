@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+// Validate the url
 const validURL = str => {
     var pattern = new RegExp('^(https?:\\/\\/)?' +
         '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
@@ -65,9 +66,14 @@ app.post('/api/add_link', (req, res) => {
                     success: false
                 });
                 else {
+                    let link = req.body.link;
+                    // Check if the link contains an http/https protocol
+                    if (!/^https?:\/\//i.test(link)) {
+                        link = `http://${link}`;
+                    }
                     con.getConnection(function(err, tempCont) {
                         let sql = `INSERT INTO links (linkPath, id)
-        VALUES ("${req.body.link}", "${resID}");`;
+        VALUES ("${link}", "${resID}");`;
                         con.query(sql, function(err, result) {
                             if (err) res.json({
                                 success: false
